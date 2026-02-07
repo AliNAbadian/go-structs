@@ -12,14 +12,31 @@ var reader = bufio.NewReader(os.Stdin)
 type User struct {
 	firstName   string
 	lastName    string
-	age         int
+	age         string
 	dateCreated time.Time
 }
 
+func (userData User) output() {
+	fmt.Printf("my name is %v %v (born on %v)", userData.firstName, userData.lastName, userData.age)
+}
+
+func NewUser(fName string, lName string, bDay string) *User {
+	userData := User{
+		firstName:   fName,
+		lastName:    lName,
+		age:         bDay,
+		dateCreated: time.Now(),
+	}
+
+	return &userData
+}
 func main() {
-	var userData User
 
-	userData.firstName = inputReader("Please Enter Your Firstname: ")
+	firstName := InputReader("Please Enter Your Firstname: ")
+	lastName := InputReader("Please Enter Your Lastname: ")
+	birth := InputReader("Your Birth Day: YYYY/MM/DD: ")
 
-	fmt.Println(userData.firstName)
+	userData := NewUser(firstName, lastName, birth)
+
+	userData.output()
 }

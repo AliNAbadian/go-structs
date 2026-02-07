@@ -5,11 +5,10 @@ import (
 	"strings"
 )
 
-func inputReader(promptText string) string {
+func InputReader(promptText string) string {
 	fmt.Print(promptText)
+
 	userInput, _ := reader.ReadString('\n')
 
-	cleanedInput := strings.Trim(userInput, "\n")
-
-	return cleanedInput
+	return strings.TrimSpace(userInput)
 }

@@ -16,7 +16,7 @@ type User struct {
 	dateCreated time.Time
 }
 
-func (userData User) output() {
+func (userData *User) output() {
 	fmt.Printf("my name is %v %v (born on %v)", userData.firstName, userData.lastName, userData.age)
 }
 
